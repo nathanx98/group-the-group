@@ -2,6 +2,7 @@
 
 <html>
 	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     	<title>Simple Map</title>
     	<meta name="viewport" content="initial-scale=1.0">
     	<meta charset="utf-8">
@@ -27,14 +28,66 @@
 				text-align: left;
 				display: inline-block;
 			}
+		  #createForm {
+				vertical-align: top;
+				position: absolute;
+				left: 0.8%;
+				top: 13%;
+			}
+			#form {
+				padding-left: 5%;
+				padding-right: 5%;
+				padding-bottom: 5%;
+			}
     	</style>
   	</head>
   	<body>
-		<div id="map"></div>
-		
+			<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<div id="map">
+		</div>
     	<script src = "maps.js"></script>
     	<script async defer
       		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8mx9V-1MYT8wwnjno_8ZlEAO3t6E7dIE&callback=initMap">
     	</script>
+			<div id="createForm">
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#searchForm" aria-expanded="false" aria-controls="collapseExample">
+			    Search
+			  </button>
+				<div class="collapse" id="searchForm">
+				  <div class="card card-body" id="form">
+						<form>
+						  <div class="form-group">
+						    <label for="searchStart">Start</label>
+						    <input type="text" class="form-control" id="searchStart" placeholder="Search for location here">
+						  </div>
+						  <div class="form-group">
+						    <label for="searchEnd">End</label>
+						    <input type="text" class="form-control" id="searchEnd" placeholder="Search for location here">
+						  </div>
+							<div class="form-group">
+								<output name="amount1" id="amount1" for="rangeInput">Distance: 100%</output>
+								<input type="range" id="rangeInput"
+								       name="rangeInput" min="0" max="100" value="0"
+								       oninput="amount2.value=percentizeE(rangeInput.value);amount1.value=percentizeD(100-rangeInput.value)">
+
+								<output name="amount2" id="amount2" for="rangeInput">Elevation: 0%</output>
+								<script>
+								function percentizeD(val){
+									return ('Distance: ' + val + '%')
+								}
+								function percentizeE(val){
+									return ('Elevation: ' + val + '%')
+								}
+								</script>
+							</div>
+							<button type="submit" class="btn btn-primary">Get Route</button>
+						</form>
+				  </div>
+				</div>
+			</div>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8mx9V-1MYT8wwnjno_8ZlEAO3t6E7dIE&libraries=places&callback=initMap"
+         async defer></script>
   	</body>
 </html>
