@@ -50,6 +50,7 @@
     searchRoute.addEventListener('click', function(){
       alert('hi');
     });
+    
     marker.addListener('mouseover',function(){
         infoWindow.setContent(infocontent);
         infoWindow.open(map,marker);
