@@ -39,6 +39,19 @@
 				padding-right: 5%;
 				padding-bottom: 5%;
 			}
+			#searchButton{
+				background-color: #ffffff; !important
+			}
+			#infoButton{
+				background-color: #ffffff; !important
+				vertical-align: top;
+				position: absolute;
+				left: 96.6%;
+				top: 8%;
+			}
+			#infoSheet{
+				float: left; !important
+			}
     	</style>
   	</head>
   	<body>
@@ -51,8 +64,19 @@
     	<script async defer
       		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8mx9V-1MYT8wwnjno_8ZlEAO3t6E7dIE&callback=initMap">
     	</script>
+			<div id = "infoButton">
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+				<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#infoSheet" aria-expanded="false" aria-controls="infoSheet">
+					<i class="fa fa-info-circle"></i>
+				</button>
+				<div class="collapse" id="infoSheet">
+					<div class="card card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+					</div>
+			</div>
+			</div>
 			<div id="createForm">
-				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#searchForm" aria-expanded="false" aria-controls="collapseExample">
+				<button id="searchButton" class="btn btn-default dropdown-toggle" type="button" data-toggle="collapse" data-target="#searchForm" aria-expanded="false" aria-controls="searchForm">
 			    Search
 			  </button>
 				<div class="collapse" id="searchForm">
