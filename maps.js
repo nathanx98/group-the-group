@@ -35,22 +35,28 @@
 
     var searchBox1 = new google.maps.places.SearchBox(input1);
 
-    var searchbutton = document.getElementById("searchRoute");
+    var searchbutton = document.getElementById("getRoute");
+    
     searchbutton.addEventListener('click',function(){
         //do some stuff here
-        alert("hi");
+        var place = searchBox1.getPlaces();
+        // var s = "";
+        // for(var i = 0;i < places.length;i++){
+        //     s += place[i].name;
+        // }
+        alert(place[0].formatted_address);
     });
 
     var input2 = document.getElementById('searchEnd');
 
     var searchBox2 = new google.maps.places.SearchBox(input2);
 
-    var searchRoute = document.getElementById('getRoute');
+    // var searchRoute = document.getElementById('getRoute');
 
-    searchRoute.addEventListener('click', function(){
-      alert('hi');
-    });
-    
+    // searchRoute.addEventListener('click', function(){
+    //   alert('hi');
+    // });
+
     marker.addListener('mouseover',function(){
         infoWindow.setContent(infocontent);
         infoWindow.open(map,marker);
