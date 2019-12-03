@@ -44,6 +44,12 @@
     var input2 = document.getElementById('searchEnd');
 
     var searchBox2 = new google.maps.places.SearchBox(input2);
+
+    var searchRoute = document.getElementById('getRoute');
+
+    searchRoute.addEventListener('click', function(){
+      alert('hi');
+    });
     marker.addListener('mouseover',function(){
         infoWindow.setContent(infocontent);
         infoWindow.open(map,marker);
