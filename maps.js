@@ -35,6 +35,12 @@
 
     var searchBox1 = new google.maps.places.SearchBox(input1);
 
+    var searchbutton = document.getElementById("searchRoute");
+    searchbutton.addEventListener('click',function(){
+        //do some stuff here
+        alert("hi");
+    });
+
     var input2 = document.getElementById('searchEnd');
 
     var searchBox2 = new google.maps.places.SearchBox(input2);
@@ -51,4 +57,6 @@
         window.open( "img.html", "_blank");
     });
 
+    
 }
+
