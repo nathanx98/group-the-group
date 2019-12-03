@@ -2,6 +2,13 @@
 
 <html>
 	<head>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin=""/>
+	<!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+	crossorigin=""></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     	<title>Simple Map</title>
     	<meta name="viewport" content="initial-scale=1.0">
@@ -9,7 +16,7 @@
     	<style>
       		/* Always set the map height explicitly to define the size of the div
        		* element that contains the map. */
-      		#map {
+      		#mapid {
         		height: 100%;
       		}
       		html, body {
@@ -17,22 +24,11 @@
         		margin: 0;
         		padding: 0;
       		}
-			.pics{
-				max-height: 200px;
-				margin-left: 0px;
-				margin-right: auto;
-			}
-			.list{
-				margin: auto;
-				vertical-align: top;
-				text-align: left;
-				display: inline-block;
-			}
 		  #createForm {
-				vertical-align: top;
 				position: absolute;
 				left: 0.8%;
 				top: 13%;
+				z-index:1000;
 			}
 			#form {
 				width:400px;
@@ -44,15 +40,18 @@
 			}
 			#searchButton{
 				background-color: #ffffff; !important
+				position: absolute;
+				z-index:1000;
 			}
 			#infoButton{
-				vertical-align: top;
 				position: absolute;
+				z-index:1000;
 				left: 96.6%;
 				top: 8%;
 			}
 			#infoSheet{
 				position: absolute;
+				z-index:1000;
 				right: 20%;
 			}
     	</style>
@@ -61,12 +60,6 @@
 			<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-		<div id="map">
-		</div>
-    	<script src = "maps.js"></script>
-    	<script async defer
-      		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm0ZhqcDDR75EnTs4EfSxFIdFIdowigCs&libraries=places&callback=initMap">
-    	</script>
 			<div id = "infoButton">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 				<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#infoSheet" aria-expanded="false" aria-controls="infoSheet">
@@ -114,5 +107,13 @@
 				  </div>
 				</div>
 			</div>
+			 <div id="mapid"></div>
+			 <script>
+				 var campus = [42.3896166,-72.52946829999999];
+				 var mymap = L.map('mapid').setView(campus, 13);
+				 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+						 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				 }).addTo(mymap);
+			 </script>
   	</body>
 </html>
