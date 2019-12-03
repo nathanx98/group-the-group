@@ -42,7 +42,11 @@
     var searchRoute = document.getElementById('getRoute');
 
     searchRoute.addEventListener('click', function(){
-      alert('hi');
+      var start = searchBox1.getPlaces();
+      var end = searchBox2.getPlaces();
+      var distance = document.getElementById('amount1').value;
+      var eleveation = document.getElementById('amount2').value;
+      alert(start[0].name + "\n" + end[0].);
     });
     marker.addListener('mouseover',function(){
         infoWindow.setContent(infocontent);
