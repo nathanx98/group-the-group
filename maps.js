@@ -69,7 +69,7 @@
     marker.addListener('click',function(){
         window.open( "img.html", "_blank");
     });
-
-    
 }
+
+
 
