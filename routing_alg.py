@@ -7,10 +7,6 @@ import osmnx as ox
 
 api_key = "AIzaSyCm0ZhqcDDR75EnTs4EfSxFIdFIdowigCs"
 
-# place_name = "Amherst,Massachusetts,USA"
-# graph = ox.graph_from_place(place_name)
-# fig,ax = ox.plot_graph(graph)
-
 place = 'Amherst'
 place_query = {'city':'Amherst', 'state':'Massachusetts', 'country':'USA'}
 G = ox.graph_from_place(place_query, network_type='drive')
@@ -25,6 +21,13 @@ G_proj = ox.project_graph(G)
 origin = ox.get_nearest_node(G, (42.3868, -72.5301))
 destination = ox.get_nearest_node(G, (42.3418, -72.5884))
 bbox = ox.bbox_from_point((42.3868, -72.5301), distance=6000, project_utm=True)
+
+
+
+place = "55 Fruit Street, Boston, MA, USA"
+area = ox.geo_utils.geocode(place)
+print(area)
+
 
 
 def impedance(length, grade):
