@@ -17,3 +17,5 @@ G = ox.graph_from_place(place_query, network_type='drive')
 G = ox.add_node_elevations(G, api_key=api_key)
 G = ox.add_edge_grades(G)
 
+def findRoute(graph,start,end, eWeight, dWeight):
+    
