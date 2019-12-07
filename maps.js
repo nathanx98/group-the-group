@@ -36,7 +36,7 @@
     var searchBox1 = new google.maps.places.SearchBox(input1);
 
     var searchbutton = document.getElementById("getRoute");
-    
+
     searchbutton.addEventListener('click',function(){
         //do some stuff here
         var place = searchBox1.getPlaces();
@@ -57,6 +57,13 @@
     //   alert('hi');
     // });
 
+    searchRoute.addEventListener('click', function(){
+      var start = searchBox1.getPlaces();
+      var end = searchBox2.getPlaces();
+      var distance = document.getElementById('amount1').value;
+      var eleveation = document.getElementById('amount2').value;
+      alert(start[0].name + "\n" + end[0].);
+    });
     marker.addListener('mouseover',function(){
         infoWindow.setContent(infocontent);
         infoWindow.open(map,marker);
@@ -69,7 +76,6 @@
     marker.addListener('click',function(){
         window.open( "img.html", "_blank");
     });
+
+
 }
-
-
-
