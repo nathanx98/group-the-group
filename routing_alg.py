@@ -3,6 +3,8 @@ import networkx as nx
 import numpy as np
 import osmnx as ox
 
+#https://github.com/gboeing/osmnx-examples/blob/master/notebooks/12-node-elevations-edge-grades.ipynb
+
 api_key = "AIzaSyCm0ZhqcDDR75EnTs4EfSxFIdFIdowigCs"
 
 # place_name = "Amherst,Massachusetts,USA"
@@ -19,4 +21,3 @@ G = ox.add_edge_grades(G)
 
 def findRoute(graph,start,end, eWeight, dWeight):
 
-{32.4,32.5}
