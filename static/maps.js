@@ -45,13 +45,16 @@
         data: { start: start[0].geometry.location.lat(), start2: start[0].geometry.location.lng(), end: end[0].geometry.location.lat(), end2: end[0].geometry.location.lng(), distance: distance, elevation: elevation}
       })
         .done(function( msg ) {
-          var points = [];
-          for (var point in msg) {
-            points.push(new google.maps.LatLng(point))
-          }
-          poly = new google.maps.Polyline({
-             paths:points,
-             strokeColor: '#000000',
+          var points = []
+            for (var point in msg) {
+              var coords = new google.maps.LatLng(msg[point][1],msg[point][0]);
+              points.push(coords)
+            }
+
+          var poly = new google.maps.Polyline({
+             path:points,
+             //geodesic: true,
+             strokeColor: '#FF0000',
              strokeOpacity: 1.0,
              strokeWeight: 3
            });

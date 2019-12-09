@@ -33,7 +33,7 @@ def route():
     l = []
     for x in route:
         data = gdf.loc[gdf['osmid']==x].values.tolist()
-        l.append(data)
+        l.append((data[0][1],data[0][2]))
     return jsonify(l)
 def getRoute(start, end, dWeight, eWeight):
     origin = ox.get_nearest_node(G, start)
@@ -47,8 +47,8 @@ def getRoute(start, end, dWeight, eWeight):
 
 
     for u, v, k, data in G_proj.edges(keys=True, data=True):
-        data['impedance'] = impedance(data['length'], data['grade_abs'],dWeight,eWeight)
         data['rise'] = data['length'] * data['grade']
+        data['impedance'] = impedance(data['length'], data['rise'],dWeight,eWeight)
 
     return nx.shortest_path(G, source=origin, target=destination, weight='impedance')
 
