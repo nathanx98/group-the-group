@@ -33,7 +33,7 @@ def route():
     l = []
     for x in route:
         data = gdf.loc[gdf['osmid']==x].values.tolist()
-        l.append(data)
+        l.append((data[0][1],data[0][2]))
     return jsonify(l)
 def getRoute(start, end, dWeight, eWeight):
     origin = ox.get_nearest_node(G, start)
