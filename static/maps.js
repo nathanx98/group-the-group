@@ -47,30 +47,8 @@
         .done(function( msg ) {
           var points = []
             for (var point in msg) {
-                var coords = new google.maps.LatLng(msg[point][1],msg[point][0]);
+              var coords = new google.maps.LatLng(msg[point][1],msg[point][0]);
               points.push(coords)
-
-              // points.push({lat:msg[point][0],lng:msg[point][1]})
-              //alert(typeof msg[point][0])
-              // var number1 = msg[point][0]
-              // var number2 = msg[point][1]
-              // alert(number1+" "+number2)
-
-              // var a = new google.maps.Marker({
-              //   position: {lat: 42.3896166, lng: -72.52946829999999},
-              //   map: map,
-              // });
-
-              // var b = new google.maps.Marker({
-              //   position: {lat: 42.3796166, lng: -72.53946829999999},
-              //   map: map,
-              // });
-
-              // var marker = new google.maps.Marker({
-              //   position: {lat:number2,lng:number1},
-              //   map: map,
-              // });
-              // alert("stuff")
             }
 
           var poly = new google.maps.Polyline({

@@ -42,14 +42,12 @@ def getRoute(start, end, dWeight, eWeight):
 
 
     def impedance(length, grade,dWeight,eWeight):
-        penalty = grade ** 2
-        return length * penalty
         return length*dWeight + grade*eWeight
 
 
     for u, v, k, data in G_proj.edges(keys=True, data=True):
-        data['impedance'] = impedance(data['length'], data['grade_abs'],dWeight,eWeight)
         data['rise'] = data['length'] * data['grade']
+        data['impedance'] = impedance(data['length'], data['rise'],dWeight,eWeight)
 
     return nx.shortest_path(G, source=origin, target=destination, weight='impedance')
 
