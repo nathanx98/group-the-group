@@ -17,18 +17,28 @@ G = ox.add_node_elevations(G, api_key=api_key)
 G = ox.add_edge_grades(G)
 G_proj = ox.project_graph(G)
 
+
 @app.route('/')
 def webprint():
     return render_template('map_test.html')
 
 @app.route('/route', methods=['GET', 'POST'])
 def route():
-    route = getRoute((float(request.form['start']), float(request.form['start2'])),(float(request.form['end']),float(request.form['end2'])),float(request.form['distance']),float(request.form['elevation']));
-    return jsonify(route)
+    route = getRoute((float(request.form['start']), float(request.form['start2'])),(float(request.form['end']),float(request.form['end2'])),float(request.form['distance']),float(request.form['elevation']))
+    print()
+    gdf = ox.graph_to_gdfs(G, edges=False)
+    print("oaisdfjoajdfoajdf ijapfj apidjf ajf iop")
+    print(gdf.columns)
+    gdf = gdf[['osmid','x','y']]
+    l = []
+    for x in route:
+        data = gdf.loc[gdf['osmid']==x].values.tolist()
+        l.append(data)
+    return jsonify(l)
 def getRoute(start, end, dWeight, eWeight):
     origin = ox.get_nearest_node(G, start)
     destination = ox.get_nearest_node(G, end)
-    bbox = ox.bbox_from_point(start, distance=6000, project_utm=True)
+    #bbox = ox.bbox_from_point(start, distance=6000, project_utm=True)
 
 
     def impedance(length, grade,dWeight,eWeight):
@@ -39,7 +49,7 @@ def getRoute(start, end, dWeight, eWeight):
         data['impedance'] = impedance(data['length'], data['grade_abs'],dWeight,eWeight)
         data['rise'] = data['length'] * data['grade']
 
-    return nx.shortest_path(g, source=origin, target=destination, weight='impedance')
+    return nx.shortest_path(G, source=origin, target=destination, weight='impedance')
 
 if __name__ == "__main__":
     app.run(debug = True)
