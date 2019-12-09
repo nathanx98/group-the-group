@@ -45,13 +45,38 @@
         data: { start: start[0].geometry.location.lat(), start2: start[0].geometry.location.lng(), end: end[0].geometry.location.lat(), end2: end[0].geometry.location.lng(), distance: distance, elevation: elevation}
       })
         .done(function( msg ) {
-          var points = [];
-          for (var point in msg) {
-            points.push(new google.maps.LatLng(point))
-          }
-          poly = new google.maps.Polyline({
-             paths:points,
-             strokeColor: '#000000',
+          var points = []
+            for (var point in msg) {
+                var coords = new google.maps.LatLng(msg[point][1],msg[point][0]);
+              points.push(coords)
+
+              // points.push({lat:msg[point][0],lng:msg[point][1]})
+              //alert(typeof msg[point][0])
+              // var number1 = msg[point][0]
+              // var number2 = msg[point][1]
+              // alert(number1+" "+number2)
+
+              // var a = new google.maps.Marker({
+              //   position: {lat: 42.3896166, lng: -72.52946829999999},
+              //   map: map,
+              // });
+
+              // var b = new google.maps.Marker({
+              //   position: {lat: 42.3796166, lng: -72.53946829999999},
+              //   map: map,
+              // });
+
+              // var marker = new google.maps.Marker({
+              //   position: {lat:number2,lng:number1},
+              //   map: map,
+              // });
+              // alert("stuff")
+            }
+
+          var poly = new google.maps.Polyline({
+             path:points,
+             //geodesic: true,
+             strokeColor: '#FF0000',
              strokeOpacity: 1.0,
              strokeWeight: 3
            });
