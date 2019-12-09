@@ -23,7 +23,7 @@ def webprint():
 
 @app.route('/route', methods=['GET', 'POST'])
 def route():
-    route = getRoute((request.form['start'], request.form['start2']),(request.form['end'],request.form['end2']),request.form['distance'],request.form['elevation']);
+    route = getRoute((float(request.form['start']), float(request.form['start2'])),(float(request.form['end']),float(request.form['end2'])),float(request.form['distance']),float(request.form['elevation']));
     return jsonify(route)
 def getRoute(start, end, dWeight, eWeight):
     origin = ox.get_nearest_node(G, start)

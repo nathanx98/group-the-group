@@ -33,8 +33,8 @@
     searchRoute.addEventListener('click', function(){
       var start = searchBox1.getPlaces();
       var end = searchBox2.getPlaces();
-      var distance = document.getElementById('amount1').value;
-      var elevation = document.getElementById('amount2').value;
+      var distance = (100 - document.getElementById('rangeInput').value)/100;
+      var elevation = (document.getElementById('rangeInput').value)/100;
       if (start == undefined || end == undefined) {
         alert("Please enter a value for start and end!")
       }
