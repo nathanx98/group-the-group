@@ -23,7 +23,7 @@ def webprint():
 
 @app.route('/route', methods=['GET', 'POST'])
 def route():
-    route = getRoute((float(request.form['start']), float(request.form['start2'])),(float(request.form['end']),float(request.form['end2'])),float(request.form['distance']),float(request.form['elevation']));
+    route = getRoute((float(request.form['start']), float(request.form['start2'])),(float(request.form['end']),float(request.form['end2'])),float(request.form['distance']),float(request.form['elevation']))
     return jsonify(route)
 def getRoute(start, end, dWeight, eWeight):
     origin = ox.get_nearest_node(G, start)
@@ -39,7 +39,7 @@ def getRoute(start, end, dWeight, eWeight):
         data['impedance'] = impedance(data['length'], data['grade_abs'],dWeight,eWeight)
         data['rise'] = data['length'] * data['grade']
 
-    return nx.shortest_path(g, source=origin, target=destination, weight='impedance')
+    return nx.shortest_path(G, source=origin, target=destination, weight='impedance')
 
 if __name__ == "__main__":
     app.run(debug = True)

@@ -45,7 +45,17 @@
         data: { start: start[0].geometry.location.lat(), start2: start[0].geometry.location.lng(), end: end[0].geometry.location.lat(), end2: end[0].geometry.location.lng(), distance: distance, elevation: elevation}
       })
         .done(function( msg ) {
-          alert( msg );
+          var points = [];
+          for (var point in msg) {
+            points.push(new google.maps.LatLng(point))
+          }
+          poly = new google.maps.Polyline({
+             paths:points,
+             strokeColor: '#000000',
+             strokeOpacity: 1.0,
+             strokeWeight: 3
+           });
+           poly.setMap(map);
         });
     });
 
