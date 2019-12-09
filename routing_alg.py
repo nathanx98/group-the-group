@@ -42,6 +42,7 @@ def getRoute(start, end, dWeight, eWeight):
 
 
     def impedance(length, grade,dWeight,eWeight):
+        penalty = grade ** 2
         return length*dWeight + grade*eWeight
 
 
