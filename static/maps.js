@@ -31,16 +31,16 @@
 
     var select = document.getElementById("mySelect");
     select.addEventListener("change", function() {
-        var x = document.getElementById("mySelect").value;    
+        var x = document.getElementById("mySelect").value;
         document.getElementById("searchStart").value = x;
     });
 
     var select2 = document.getElementById("mySelect2");
     select2.addEventListener("change", function() {
-        var y = document.getElementById("mySelect2").value;    
+        var y = document.getElementById("mySelect2").value;
         document.getElementById("searchEnd").value = y;
     });
-
+    routesPoly = [];
     searchRoute.addEventListener('click', function(){
       var start = searchBox1.getPlaces();
       var end = searchBox2.getPlaces();
@@ -61,7 +61,10 @@
               var coords = new google.maps.LatLng(msg[point][1],msg[point][0]);
               points.push(coords)
             }
-
+            for (var route in routesPoly) {
+              route.setMap(null);
+            }
+            routesPoly = [];
           var poly = new google.maps.Polyline({
              path:points,
              //geodesic: true,
@@ -70,6 +73,7 @@
              strokeWeight: 3
            });
            poly.setMap(map);
+           routes.push(poly);
         });
     });
 
