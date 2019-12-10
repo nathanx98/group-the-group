@@ -45,6 +45,7 @@
       var end = searchBox2.getPlaces();
       var distance = (100 - document.getElementById('rangeInput').value)/100;
       var elevation = (document.getElementById('rangeInput').value)/100;
+      document.getElementById('infoSheet').innerHTML = ('Distance: ' + distance + ' mile(s) Elevation: ' + elevation +' feet')
       if (start == undefined || end == undefined) {
         alert("Please enter a value for start and end!")
       }
