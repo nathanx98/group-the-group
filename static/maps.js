@@ -65,7 +65,7 @@
               route.setMap(null);
             }
             routesPoly = [];
-          var poly = new google.maps.Polyline({
+        var poly = new google.maps.Polyline({
              path:points,
              //geodesic: true,
              strokeColor: '#FF0000',
