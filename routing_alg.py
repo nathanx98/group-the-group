@@ -41,16 +41,6 @@ def getRoute(start, end, dWeight, eWeight):
     for u, v, k, data in G_proj.edges(keys=True, data=True):
         data['rise'] = data['length'] * data['grade']
         data['impedance'] = data['length']*dWeight + abs(data['rise']*eWeight)
-        print("length")
-        print(data['length'])
-        print("WLength")
-        print(data['length']*dWeight)
-        print("Impedance")
-        print(data['impedance'])
-        print('rise')
-        print(data['rise'])
-        print('WRise')
-        print(data['rise']*eWeight)
     # if dWeight > eWeight:
     #     return nx.shortest_path(G, source=origin, target=destination, weight='length')
     # else:

@@ -72,6 +72,10 @@
            });
            poly.setMap(map);
            line = poly;
+           alert(google.maps.geometry.spherical.computeLength(poly.getPath().getArray()));
+           var elevator = new google.maps.ElevationService;
+           var pathElevation = displayPathElevation(poly.getPath(), elevator, map);
+           alert(pathElevation);
         });
     });
 
