@@ -26,10 +26,7 @@ def webprint():
 @app.route('/route', methods=['GET', 'POST'])
 def route():
     route = getRoute((float(request.form['start']), float(request.form['start2'])),(float(request.form['end']),float(request.form['end2'])),float(request.form['distance']),float(request.form['elevation']))
-    print()
     gdf = ox.graph_to_gdfs(G, edges=False)
-    print("oaisdfjoajdfoajdf ijapfj apidjf ajf iop")
-    print(gdf.columns)
     gdf = gdf[['osmid','x','y']]
     l = []
     for x in route:
@@ -41,19 +38,24 @@ def getRoute(start, end, dWeight, eWeight):
     destination = ox.get_nearest_node(G, end)
     #bbox = ox.bbox_from_point(start, distance=6000, project_utm=True)
 
-
-    def impedance(length, grade,dWeight,eWeight):
-        return length*dWeight + grade*eWeight
-
-
     for u, v, k, data in G_proj.edges(keys=True, data=True):
         data['rise'] = data['length'] * data['grade']
-        data['impedance'] = impedance(data['length'], data['rise'],dWeight,eWeight)
-    if dWeight > eWeight:
-        return nx.shortest_path(G, source=origin, target=destination, weight='length')
-    else:
-        return nx.shortest_path(G, source=origin, target=destination, weight='rise')
-    #return nx.shortest_path(G, source=origin, target=destination, weight='impedance')
+        data['impedance'] = data['length']*dWeight + abs(data['rise']*eWeight)
+        print("length")
+        print(data['length'])
+        print("WLength")
+        print(data['length']*dWeight)
+        print("Impedance")
+        print(data['impedance'])
+        print('rise')
+        print(data['rise'])
+        print('WRise')
+        print(data['rise']*eWeight)
+    # if dWeight > eWeight:
+    #     return nx.shortest_path(G, source=origin, target=destination, weight='length')
+    # else:
+    #     return nx.shortest_path(G, source=origin, target=destination, weight='rise')
+    return nx.shortest_path(G_proj, source=origin, target=destination, weight='impedance')
 
 if __name__ == "__main__":
     app.run(debug = True)
