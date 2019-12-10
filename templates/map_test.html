@@ -5,7 +5,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     	<title>Simple Map</title>
     	<meta name="viewport" content="initial-scale=1.0">
-    	<meta charset="utf-8">
+		<meta charset="utf-8">
+		
     	<style>
       		/* Always set the map height explicitly to define the size of the div
        		* element that contains the map. */
@@ -36,14 +37,14 @@
 			}
 			#form {
 				width:400px;
-				height:300px;
+				height:350px;
 				padding-left: 5%;
 				padding-right: 5%;
 				padding-bottom: 5%;
 				padding-top: 5%;
 			}
 			#searchButton{
-				background-color: #ffffff; !important
+				background-color: #ffffff;
 			}
 			#infoButton{
 				vertical-align: top;
@@ -90,10 +91,46 @@
 						    <label for="searchStart">Start</label>
 						    <input type="text" class="form-control" id="searchStart" placeholder="Search for location here">
 						  </div>
+						  <select id="mySelect">
+							<option value="Berkshire Dining Commons, Amherst, MA, USA">Berkshire Dining</option>
+							<option value="Worcester Dining Commons, Amherst, MA, USA">Worcester Dining</option>
+							<option value="Hampshire Dining Commons, Amherst, MA, USA">Hampshire Dining</option>
+							<option value="Franklin Dining Commons, Amherst, MA, USA">Franklin Dining</option>
+							<option value="W. E. B. Du Bois Library, Hicks Way, Amherst, MA, USA">Library</option>
+							<option value="Integrative Learning Center, North Pleasant Street, Amherst, MA, USA">ILC</option>
+							<option value="1 Campus Center Way, Amherst, MA, USA">Campus Center</option>
+							<option value="Recreation Center, UMass Amherst, Amherst, MA, USA">Rec Center</option>
+							<option value="Lederle Graduate Research Center, Amherst, MA, USA">Lederle</option>
+							<option value="Haigis Mall, Massachusetts Avenue, Amherst, MA, USA">Haigis Mall</option>
+							<option value="Northeast Residential Area, Amherst, MA, USA">Northeast</option>
+							<option value="Orchard Hill Residential Area, Amherst, MA, USA">Orchard Hill</option>
+							<option value="Central Residential Area, Amherst, MA, USA">Central</option>
+							<option value="Southwest Residential Area, Amherst, MA, USA">Southwest</option>
+							<option value="Commonwealth Honors College, Commonwealth Avenue, Amherst, MA, USA">Honors College</option>
+							<option value="UMass Amherst, North Apartment A, Amherst, MA, USA">North</option>
+					  	</select>
 						  <div class="form-group">
 						    <label for="searchEnd">End</label>
 						    <input type="text" class="form-control" id="searchEnd" placeholder="Search for location here">
 						  </div>
+						<select id="mySelect2">
+							<option value="Berkshire Dining Commons, Amherst, MA, USA">Berkshire Dining</option>
+							<option value="Worcester Dining Commons, Amherst, MA, USA">Worcester Dining</option>
+							<option value="Hampshire Dining Commons, Amherst, MA, USA">Hampshire Dining</option>
+							<option value="Franklin Dining Commons, Amherst, MA, USA">Franklin Dining</option>
+							<option value="W. E. B. Du Bois Library, Hicks Way, Amherst, MA, USA">Library</option>
+							<option value="Integrative Learning Center, North Pleasant Street, Amherst, MA, USA">ILC</option>
+							<option value="1 Campus Center Way, Amherst, MA, USA">Campus Center</option>
+							<option value="Recreation Center, UMass Amherst, Amherst, MA, USA">Rec Center</option>
+							<option value="Lederle Graduate Research Center, Amherst, MA, USA">Lederle</option>
+							<option value="Haigis Mall, Massachusetts Avenue, Amherst, MA, USA">Haigis Mall</option>
+							<option value="Northeast Residential Area, Amherst, MA, USA">Northeast</option>
+							<option value="Orchard Hill Residential Area, Amherst, MA, USA">Orchard Hill</option>
+							<option value="Central Residential Area, Amherst, MA, USA">Central</option>
+							<option value="Southwest Residential Area, Amherst, MA, USA">Southwest</option>
+							<option value="Commonwealth Honors College, Commonwealth Avenue, Amherst, MA, USA">Honors College</option>
+							<option value="UMass Amherst, North Apartment A, Amherst, MA, USA">North</option>
+					  	</select>
 							<div class="form-group">
 								<output name="amount1" id="amount1" for="rangeInput">Distance: 100%</output>
 								<input type="range" id="rangeInput"

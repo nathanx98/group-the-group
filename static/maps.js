@@ -1,7 +1,7 @@
     var map;
-    function displayForm() {
+    // function displayForm() {
 
-    }
+    // }
     function initMap() {
     /*
     Maps initialized to UMass Amherst with latlng(42.391155,-72.526711)
@@ -29,6 +29,17 @@
     //   alert('hi');
     // });
 
+    var select = document.getElementById("mySelect");
+    select.addEventListener("change", function() {
+        var x = document.getElementById("mySelect").value;    
+        document.getElementById("searchStart").value = x;
+    });
+
+    var select2 = document.getElementById("mySelect2");
+    select2.addEventListener("change", function() {
+        var y = document.getElementById("mySelect2").value;    
+        document.getElementById("searchEnd").value = y;
+    });
 
     searchRoute.addEventListener('click', function(){
       var start = searchBox1.getPlaces();
