@@ -61,8 +61,7 @@
               var coords = new google.maps.LatLng(msg[point][1],msg[point][0]);
               points.push(coords)
             }
-
-          var poly = new google.maps.Polyline({
+        var poly = new google.maps.Polyline({
              path:points,
              //geodesic: true,
              strokeColor: '#FF0000',
