@@ -15,6 +15,7 @@ place_query = {'city':'Amherst', 'state':'Massachusetts', 'country':'USA'}
 G = ox.graph_from_place(place_query, network_type='drive')
 G = ox.add_node_elevations(G, api_key=api_key)
 G = ox.add_edge_grades(G)
+G = ox.add_edge_lengths(G)
 G_proj = ox.project_graph(G)
 
 
